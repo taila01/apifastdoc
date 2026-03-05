@@ -15,9 +15,22 @@ export class DocumentoController {
     return reply.send(docs);
   }
 
-  async update(request: FastifyRequest, reply: FastifyReply) {
+  async show(request: FastifyRequest, reply: FastifyReply) {
+    const { id } = request.params as { id: string };
+    const doc = await service.buscarPorId(Number(id));
+    if (!doc) return reply.status(404).send({ message: "Documento não encontrado" });
+    return reply.send(doc);
+  }
+
+  async sign(request: FastifyRequest, reply: FastifyReply) {
     const { id } = request.params as { id: string };
     const doc = await service.assinarDocumento(Number(id)); 
     return reply.send(doc);
+  }
+
+  async delete(request: FastifyRequest, reply: FastifyReply) {
+    const { id } = request.params as { id: string };
+    await service.excluirDocumento(Number(id));
+    return reply.status(204).send();
   }
 }

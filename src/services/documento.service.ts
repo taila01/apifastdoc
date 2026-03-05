@@ -11,11 +11,15 @@ export class DocumentoService {
     return await repository.findAll();
   }
 
+  async buscarPorId(id: number) {
+    return await repository.findById(id);
+  }
+
   async assinarDocumento(id: number) {
     return await repository.updateStatus(id, "assinado");
   }
 
-  async remover(id: number) {
+  async excluirDocumento(id: number) {
     return await repository.delete(id);
   }
 }

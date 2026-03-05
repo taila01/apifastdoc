@@ -12,7 +12,15 @@ export class DocumentoRepository {
   }
 
   async findAll() {
-    return await prisma.documento.findMany();
+    return await prisma.documento.findMany({
+      orderBy: { criado_em: 'desc' } 
+    });
+  }
+
+  async findById(id: number) {
+    return await prisma.documento.findUnique({
+      where: { id }
+    });
   }
 
   async updateStatus(id: number, status: 'pendente' | 'assinado') {
@@ -23,8 +31,8 @@ export class DocumentoRepository {
   }
   
   async delete(id: number) {
-  return await prisma.documento.delete({
-    where: { id }
-  });
-}
+    return await prisma.documento.delete({
+      where: { id }
+    });
+  }
 }
