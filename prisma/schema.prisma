@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Documento {
+  id        Int      @id @default(autoincrement())
+  titulo    String
+  descricao String?
+  status    String   @default("pendente") // Pode ser 'pendente' ou 'assinado'
+  criado_em DateTime @default(now())
+
+  @@map("documentos") // Isso garante que o Prisma use o nome que você criou no pgAdmin
+}
