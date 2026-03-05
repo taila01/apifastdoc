@@ -23,6 +23,17 @@ export class DocumentoRepository {
     });
   }
 
+  async update(id: number, data: { titulo?: string; descricao?: string; status?: string }) {
+    return await prisma.documento.update({
+      where: { id },
+      data: {
+        titulo: data.titulo,
+        descricao: data.descricao,
+        status: data.status as 'pendente' | 'assinado'
+      }
+    });
+  }
+
   async updateStatus(id: number, status: 'pendente' | 'assinado') {
     return await prisma.documento.update({
       where: { id },

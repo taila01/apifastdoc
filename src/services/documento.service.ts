@@ -15,6 +15,10 @@ export class DocumentoService {
     return await repository.findById(id);
   }
 
+  async atualizarDocumento(id: number, data: { titulo?: string; descricao?: string; status?: string }) {
+    return await repository.update(id, data);
+  }
+
   async assinarDocumento(id: number) {
     return await repository.updateStatus(id, "assinado");
   }
