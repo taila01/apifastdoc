@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import cors from "@fastify/cors";
-import { documentoRoutes } from "./routes/documento.routes";
 import multipart from '@fastify/multipart';
+import { documentoRoutes } from "./routes/documento.routes";
 
 const app = fastify();
 

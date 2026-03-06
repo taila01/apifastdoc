@@ -3,8 +3,11 @@ import { DocumentoRepository } from "../repositories/documento.repository";
 const repository = new DocumentoRepository();
 
 export class DocumentoService {
-  async criarDocumento(titulo: string, descricao?: string) {
-    return await repository.create({ titulo, descricao });
+  async criarDocumento(titulo: string, conteudoTexto: string, nomeArquivo: string) {
+    return await repository.create({ 
+      titulo, 
+      descricao: conteudoTexto,
+    });
   }
 
   async listarTodos() {
@@ -15,7 +18,7 @@ export class DocumentoService {
     return await repository.findById(id);
   }
 
-  async atualizarDocumento(id: number, data: { titulo?: string; descricao?: string; status?: string }) {
+  async atualizarDocumento(id: number, data: { titulo?: string; descricao?: string; status?: string; url_arquivo?: string | null }) {
     return await repository.update(id, data);
   }
 

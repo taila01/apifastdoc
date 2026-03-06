@@ -1,12 +1,12 @@
 import { prisma } from "../lib/prisma";
 
 export class DocumentoRepository {
-  async create(data: { titulo: string; descricao?: string }) {
+  async create(data: { titulo: string; descricao?: string; url_arquivo?: string | null }) {
     return await prisma.documento.create({
       data: {
         titulo: data.titulo,
         descricao: data.descricao,
-        status: 'pendente'
+        status: 'pendente',
       }
     });
   }
@@ -23,13 +23,14 @@ export class DocumentoRepository {
     });
   }
 
-  async update(id: number, data: { titulo?: string; descricao?: string; status?: string }) {
+  async update(id: number, data: { titulo?: string; descricao?: string; status?: string; url_arquivo?: string | null }) {
     return await prisma.documento.update({
       where: { id },
       data: {
         titulo: data.titulo,
         descricao: data.descricao,
-        status: data.status as 'pendente' | 'assinado'
+        status: data.status as 'pendente' | 'assinado',
+        url_arquivo: data.url_arquivo
       }
     });
   }
