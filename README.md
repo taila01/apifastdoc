@@ -1,13 +1,13 @@
-# FastDoc API 🚀
+# FastDoc API
 
 API desenvolvida com **Fastify**, **Prisma** e **TypeScript** para gerenciamento de documentos e fluxos de assinatura.
 
-## 🛠️ Tecnologias
+## Tecnologias
 - **Node.js** + **Fastify** (Backend)
 - **Prisma ORM** (Banco de dados)
 - **TypeScript** (Tipagem estática)
 
-## 🏁 Como Iniciar
+## Como Iniciar
 
 1. **Instale as dependências:**
    ```bash
@@ -33,7 +33,7 @@ npm run dev
 
 
 
-## 📍 Endpoints da API
+## Endpoints da API
 
 | Método | Rota | Descrição |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ npm run dev
 | `PATCH` | `/documentos/:id/assinar` | Altera status para 'assinado' |
 | `DELETE` | `/documentos/:id` | Remove o documento do sistema |
 
-## 📝 Formato de Envio (POST)
+## Formato de Envio (POST)
 
 Envie as requisições com o header `Content-Type: application/json`:
 
@@ -56,7 +56,7 @@ Envie as requisições com o header `Content-Type: application/json`:
 
 ```
 
-## 🚀 Observação de Deploy
+## Observação de Deploy
 
 O servidor está configurado para rodar no host `0.0.0.0` na porta `3333` para facilitar o acesso via redes locais ou containers Docker.
 
